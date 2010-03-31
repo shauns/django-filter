@@ -21,14 +21,15 @@ class Filter(object):
     field_class = forms.Field
 
     def __init__(self, name=None, label=None, widget=None, action=None,
-        lookup_type='exact', required=False, **kwargs):
+        lookup_type='exact', required=False, critical=False, **kwargs):
         self.name = name
         self.label = label
         if action:
             self.filter = action
         self.lookup_type = lookup_type
         self.widget = widget
-        self.required = required
+        self.required = required or critical
+        self.critical = critical
         self.extra = kwargs
 
         self.creation_counter = Filter.creation_counter
