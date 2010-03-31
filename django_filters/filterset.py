@@ -228,9 +228,9 @@ class BaseFilterSet(object):
                     val = self.form.fields[name].clean(data)
                     qs = filter_.filter(qs, val)
                 except forms.ValidationError:
-                	if filter_.critical:
-                		self._qs = qs.none()
-                		return self._qs
+                    if filter_.critical:
+                        self._qs = qs.none()
+                        return self._qs
                     pass
             if self._meta.order_by:
                 try:
